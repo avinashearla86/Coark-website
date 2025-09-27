@@ -38,3 +38,4 @@ venv/  # Virtual environment
 
 backend/.env
 echo "backend/venv/" >> .gitignore
+
