@@ -1,0 +1,101 @@
+.footer {
+  background: black;
+  color: #fff;
+  padding: 40px 0 20px 0;
+}
+
+.footerGrid {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.brand {
+  flex: 1 1 340px;
+  min-width: 250px;
+}
+.logo {
+  width: 160px;        
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 0.8rem;  /* Adjusted for better spacing */
+}
+.brand p {
+  color: #bcc0ca;
+  font-size: 1.14rem;
+  margin-top: 0.5rem;
+}
+
+.services {
+  flex: 1 1 160px;
+  min-width: 160px;
+}
+.services h3 {
+  font-size: 1.05rem;
+  color: #e4e4e6;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.services li {
+  color: #bcc0ca;
+  font-size: 1.07rem;
+  margin-bottom: 0.7rem;
+}
+
+.social {
+  flex: 1 1 180px;
+  min-width: 150px;
+}
+.social h3 {
+  font-size: 1.05rem;
+  color: #e4e4e6;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.1rem;
+}
+.socialIcons a {
+  color: #bfcbe2;  /* Changed to match reference (grayish white) */
+  font-size: 1.55rem;
+  transition: color 0.18s;
+}
+.socialIcons a:hover {
+  color: #ff3c00;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #25272b;
+  margin: 2.2rem 0 1rem 0;
+}
+
+.copyright {
+  color: #bcc0ca;
+  font-size: 1.08rem;
+  opacity: 0.92;
+  text-align: center;
+  padding-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .footerGrid {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.2rem;
+    align-items: center;
+  }
+}

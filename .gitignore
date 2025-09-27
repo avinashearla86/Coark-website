@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+
+# Production builds
+dist
+dist-ssr
+build  # Ignore React build output (regenerate on deploy)
+
+# Local configs
+*.local
+.env  # Never commit secrets
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python-specific (for FastAPI backend)
+__pycache__
+*.pyc
+*.pyo
+venv/  # Virtual environment
+
+backend/venv/

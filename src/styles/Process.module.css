@@ -1,0 +1,130 @@
+/* src/styles/Process.module.css */
+.process {
+  background: black;
+  color: #fff;
+  padding: 90px 16px 60px 16px;
+  text-align: center;
+}
+.process h2 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #e23b33;
+  font-weight: 900;
+}
+.bold {
+  font-weight: 700;
+}
+.masterpieces {
+  color: #e23b33;
+    font-weight: 800;
+  font-size: 2.1rem;
+
+}
+.tagline {
+  color: #999;
+  margin-bottom: 64px;
+  font-size: 1.15rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+  margin-top: 20px;
+}
+.card {
+  background: none;
+  color: #fff;
+  text-align: center;
+  padding: 0 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+}
+.icon {
+  margin-bottom: 16px;
+  height: 54px;
+}
+.card h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.card p {
+  color: #bbb;
+  font-size: 1.06rem;
+  line-height: 1.6;
+}
+
+@keyframes fadeInUp1 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp2 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp3 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate1 {
+  animation: fadeInUp1 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.animate2 {
+  animation: fadeInUp2 0.8s ease forwards;
+  animation-delay: 0.45s;
+}
+
+.animate3 {
+  animation: fadeInUp3 0.8s ease forwards;
+  animation-delay: 0.7s;
+}
+
+/* Icon Animation Styles */
+.animatedIcon path, .animatedIcon circle, .animatedIcon rect {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s linear forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Add this for images */
+.iconImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}

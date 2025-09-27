@@ -1,0 +1,145 @@
+.contactSection {
+  padding: 5rem 2rem;
+  background: black;
+  color: #e4e4e6;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.info {
+  flex: 1 1 350px;
+  min-width: 320px;
+}
+
+.red {
+  color: #e23b33;
+  font-weight: 900;
+}
+
+.info h2 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.info p {
+  color: #bdbdc2;
+  margin-bottom: 2.2rem;
+  font-size: 1.2rem;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info li {
+  display: flex;
+  align-items: center;
+  font-size: 1.07rem;
+  margin-bottom: 1.25rem;
+}
+
+.info li  a{
+    color: #bdbdc2;
+    text-decoration: none;
+}
+.icon {
+  display: inline-block;
+  width: 2.3rem;
+  height: 2.3rem;
+  background: #e23b33;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 1rem;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+}
+
+.form {
+  flex: 1 1 410px;
+  min-width: 340px;
+  background: #191a20;
+  border-radius: 14px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form h3 {
+  color: #fff;
+  margin-bottom: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.row input {
+  flex: 1;
+}
+
+.form input,
+.form select,
+.form textarea {
+  background: #141418;
+  color: #e4e4e6;
+  border: 1.5px solid #272730;
+  border-radius: 7px;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-bottom: 0;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border: 1.5px solid #e23b33;
+}
+
+.form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.form button {
+  background: #e23b33;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  padding: 1.1rem;
+  margin-top: 0.5rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.form button:hover {
+  background: #e23b33;
+}

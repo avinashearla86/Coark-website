@@ -1,0 +1,94 @@
+.portfolio {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: black; /* Dark background to match theme */
+  color: #e4e4e6;
+}
+
+.portfolio h2 {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  color: #e23b33;
+  font-weight: 900;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cimage {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  object-fit: cover; /* For images */
+}
+
+.rimage {
+  width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  object-fit: cover; /* For images */
+}
+
+.video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+/* Smaller long-form videos */
+.longVideo {
+  max-width: 80%;   
+  
+  margin: 0 auto;     
+  display: block;
+}
+
+
+/* Your existing styles remain unchanged */
+
+/* --- Swiper Custom Styling --- */
+
+/* Pagination Dots */
+:global(.swiper-pagination-bullet) {
+  background: #e23b33 !important; /* red */
+  opacity: 0.8;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background: #e23b33 !important; /* active red */
+  opacity: 1;
+}
+
+/* Navigation Arrows */
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: #e23b33 !important; /* red */
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+:global(.swiper-button-next:hover),
+:global(.swiper-button-prev:hover) {
+  transform: scale(1.2); /* small hover effect */
+}

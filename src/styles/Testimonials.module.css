@@ -1,0 +1,103 @@
+/* src/styles/Testimonials.module.css */
+.testimonials {
+  padding: 80px 20px;
+  background: black;
+  color: #fff;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.testimonials h2 span {
+  color: #e23b33; /* highlight red */
+}
+
+.testimonials p {
+  color: #ccc;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #191a20;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #333;
+  margin-right: 12px;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  
+}
+
+.header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #bbb;
+  text-align: left;
+  
+}
+
+.rating {
+  color: #e23b33;
+  margin: 8px 0;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+.test {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.test h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}   
+
+.test h2 span {
+  color: #e23b33; /* highlight red */
+}
+
+.test p {
+  color: #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+}
