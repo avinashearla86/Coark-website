@@ -38,7 +38,7 @@ function Portfolio() {
           pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={3} // show 3 by default
-          loop
+          loop={false}  // Disabled to avoid warning (only 3 slides)
         >
           {[shortVideo2, shortVideo3, shortVideo1].map((video, i) => (
             <SwiperSlide key={i}>
@@ -60,7 +60,7 @@ function Portfolio() {
           pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={1} // show 1 by default
-          loop
+          loop={false}  // Disabled to avoid warning (only 2 slides)
         >
           {[longVideo2, longVideo1].map((video, i) => (
             <SwiperSlide key={i}>
@@ -88,9 +88,9 @@ function Portfolio() {
           pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={3} // show 3 images by default
-          loop
+          loop={true}  // Kept enabled (4 slides is enough)
         >
-          {[carousel3, carousel2, carousel1,carousel4].map((img, i) => (
+          {[carousel3, carousel2, carousel1, carousel4].map((img, i) => (
             <SwiperSlide key={i}>
               <img src={img} alt={`Carousel Post ${i + 1}`} className={styles.cimage} />
             </SwiperSlide>
@@ -106,8 +106,8 @@ function Portfolio() {
           navigation
           pagination={{ clickable: true }}
           spaceBetween={20}
-          slidesPerView={1} // show 3 images by default
-          loop
+          slidesPerView={1} // show 1 image by default
+          loop={false}  // Disabled to avoid warning (only 2 slides)
         >
           {[result1, result2].map((img, i) => (
             <SwiperSlide key={i}>

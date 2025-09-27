@@ -37,7 +37,7 @@ function Contact() {
     formData.append("message", form.message);
 
     try {
-      const response = await fetch("http://localhost:8000/send-message", {
+      const response = await fetch("https://coark-website-7.onrender.com/send-message", {  // Updated to Render URL
         method: "POST",
         body: formData,
       });
@@ -64,10 +64,9 @@ function Contact() {
             Let's discuss your digital media needs and create a strategy that drives real results for your business.
           </p>
           <ul>
-           <li>
-                <span className={styles.icon}>☎</span> 917794963444
+            <li>
+              <span className={styles.icon}>☎</span> 917794963444
             </li>
-
             <li>
               <span className={styles.icon}>✉️</span> <a href="mailto:coarkmedia@gmail.com">coarkmedia@gmail.com</a>
             </li>
