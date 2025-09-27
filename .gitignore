@@ -36,4 +36,4 @@ __pycache__
 *.pyo
 venv/  # Virtual environment
 
-backend/venv/
+backend/.env
