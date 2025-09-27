@@ -1,0 +1,4 @@
+.git
+backend/venv
+node_modules
+*.mp4  # Exclude large videos if not needed in image
