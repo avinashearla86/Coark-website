@@ -3,11 +3,11 @@ FROM python:3.10
 # Install Git LFS
 RUN apt-get update && apt-get install -y git-lfs && git lfs install
 
-# Install Node.js and npm (using Node 18)
+# Install Node.js and npm (using Node 20)
 RUN apt-get install -y curl && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
-
+    
 # Set working directory
 WORKDIR /app
 
