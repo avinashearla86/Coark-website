@@ -15,7 +15,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://your-render-url.onrender.com"],  # Update with your Render URL after Step 5
+    allow_origins=["http://localhost:3000", "https://coark-website-7.onrender.com"],  # Update with your Render URL after Step 5
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
