@@ -8,6 +8,8 @@ import os
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pathlib import Path
+import asyncio  # Added for backoff
+from aiosmtplib import SMTPException  # Added for retry handling
 
 load_dotenv()  # Load environment variables from .env
 
@@ -33,6 +35,24 @@ async def send_message(
     service: str = Form(...),
     message: str = Form(...)
 ):
+    async def send_mail_with_retry(email_message, max_retries=3):
+        for attempt in range(max_retries):
+            try:
+                await aiosmtplib.send(
+                    email_message,
+                    hostname="smtp.gmail.com",
+                    port=587,
+                    start_tls=True,
+                    username=os.getenv("SMTP_USERNAME"),
+                    password=os.getenv("SMTP_PASSWORD")
+                )
+                return True
+            except SMTPException as e:
+                print(f"Email send attempt {attempt + 1} failed: {str(e)}")  # Log for debugging
+                if attempt == max_retries - 1:
+                    raise
+                await asyncio.sleep(2 ** attempt)  # Exponential backoff (2s, 4s, 8s)
+
     try:
         # Email content
         subject = f"New Contact Form Submission: {service}"
@@ -52,18 +72,11 @@ async def send_message(
         email_message["Subject"] = subject
         email_message.set_content(body)
 
-        # Send email via Gmail SMTP
-        await aiosmtplib.send(
-            email_message,
-            hostname="smtp.gmail.com",
-            port=587,
-            start_tls=True,
-            username=os.getenv("SMTP_USERNAME"),
-            password=os.getenv("SMTP_PASSWORD")
-        )
-
+        # Send with retry
+        await send_mail_with_retry(email_message)
         return {"detail": "Message sent successfully!"}
     except Exception as e:
+        print(f"Email sending failed after retries: {str(e)}")  # Log for Render
         raise HTTPException(status_code=500, detail=f"Failed to send message: {str(e)}")
 
 # Catch-all route to serve React's index.html for client-side routing
