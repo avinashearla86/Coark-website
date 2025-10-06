@@ -2,23 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 3rem;
+  padding: 24px;
   position: sticky;
   top: 0;
-  background:black;
+  background: black;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .logo {
-     width: 160px;        
-  height: auto;
+  width: 140px;        
+  height: 80px;
   display: block;
   object-fit: contain;
-  margin-right: 2rem;
-
-  
-  
 }
 
 .navLinks {
@@ -34,5 +30,77 @@
 }
 
 .navLinks a:hover {
-  color: #ffffff;
+  color: #a80505;
+}
+
+/* Hide hamburger button and mobile nav by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1100;
+}
+
+/* Base styles for the bars with animation setup */
+.bar {
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: 0.4s;
+  border-radius: 2px;
+  position: relative;
+  transform-origin: 4px 0;
+}
+
+/* Animation: Turn hamburger into X when active */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(0px, -0px);
+}
+
+/* Responsive styles for mobile (below 440px) */
+@media (max-width: 440px) {
+  .navLinks {
+    position: fixed;
+    top: 90px;
+    height: calc(100vh - 60px);
+    width: 100%;
+    background-color: black;
+    flex-direction: column;
+    align-items: start;
+    padding: 2rem;
+    gap: 2rem;
+    transform: translateX(100%);
+    
+    /* transition: transform 0.3s ease-in-out; */
+  }
+
+  .navLinks.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navLinks a {
+    font-size: 20px;
+    
+  }
+  
+  .navLinks a:hover {
+    color: #a80505;
+  }
 }

@@ -28,28 +28,39 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("first_name", form.firstName);
-    formData.append("last_name", form.lastName);
-    formData.append("email", form.email);
-    formData.append("mobile_number", form.mobileNumber);
-    formData.append("service", form.service);
-    formData.append("message", form.message);
+    setStatus("⏳ Sending message...");
 
     try {
-      const response = await fetch("https://coark-website-7.onrender.com/send-message", {  // Updated to Render URL
+      const response = await fetch("https://coark-website-latest.onrender.com/send-message", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: form.firstName,
+          last_name: form.lastName,
+          email: form.email,
+          mobile_number: form.mobileNumber,
+          service: form.service,
+          message: form.message,
+        }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        setStatus("Message sent successfully!");
-        setForm({ firstName: "", lastName: "", email: "", mobileNumber: "", service: "", message: "" });
+        setStatus(data.detail);
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobileNumber: "",
+          service: "",
+          message: "",
+        });
       } else {
-        setStatus("Failed to send message.");
+        setStatus("❌ Failed: " + JSON.stringify(data.detail));
       }
     } catch (error) {
-      setStatus("Error: " + error.message);
+      setStatus("⚠️ Error: " + error.message);
     }
   };
 
@@ -61,20 +72,23 @@ function Contact() {
             Ready to <span className={styles.red}>Get Started?</span>
           </h2>
           <p>
-            Let's discuss your digital media needs and create a strategy that drives real results for your business.
+            Let's discuss your digital media needs and create a strategy that
+            drives real results for your business.
           </p>
           <ul>
             <li>
               <span className={styles.icon}>☎</span> 917794963444
             </li>
             <li>
-              <span className={styles.icon}>✉️</span> <a href="mailto:coarkmedia@gmail.com">coarkmedia@gmail.com</a>
+              <span className={styles.icon}>✉️</span>{" "}
+              <a href="mailto:coarkmedia@gmail.com">coarkmedia@gmail.com</a>
             </li>
             <li>
               <span className={styles.icon}>⏰</span> Mon - Fri: 9AM - 6PM EST
             </li>
           </ul>
         </div>
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <h3>Send us a message</h3>
           <div className={styles.row}>
@@ -119,7 +133,9 @@ function Contact() {
           >
             <option value="">Select a service</option>
             {services.map((s) => (
-              <option key={s} value={s}>{s}</option>
+              <option key={s} value={s}>
+                {s}
+              </option>
             ))}
           </select>
           <textarea
@@ -129,9 +145,7 @@ function Contact() {
             value={form.message}
             onChange={handleChange}
           />
-          <button type="submit">
-            <span role="img" aria-label="send">📌</span> Send Message
-          </button>
+          <button type="submit">📌 Send Message</button>
           {status && <p>{status}</p>}
         </form>
       </div>

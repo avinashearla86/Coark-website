@@ -18,6 +18,7 @@ build  # Ignore React build output (regenerate on deploy)
 # Local configs
 *.local
 .env  # Never commit secrets
+*.env
 
 # Editor directories and files
 .vscode/*

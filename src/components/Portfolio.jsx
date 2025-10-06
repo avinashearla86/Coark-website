@@ -36,9 +36,15 @@ function Portfolio() {
           modules={[Navigation, Pagination]}
           navigation
           pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={3} // show 3 by default
-          loop={false}  // Disabled to avoid warning (only 3 slides)
+          spaceBetween={10} // Default smaller for mobile
+          slidesPerView={1} // Default: 1 for mobile
+          loop={false}  // Disabled (only 3 slides)
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
         >
           {[shortVideo2, shortVideo3, shortVideo1].map((video, i) => (
             <SwiperSlide key={i}>
@@ -58,9 +64,14 @@ function Portfolio() {
           modules={[Navigation, Pagination]}
           navigation
           pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={1} // show 1 by default
-          loop={false}  // Disabled to avoid warning (only 2 slides)
+          spaceBetween={10} // Default smaller for mobile
+          slidesPerView={1} // Always 1
+          loop={false}  // Disabled (only 2 slides)
+          breakpoints={{
+            768: {
+              spaceBetween: 20,
+            },
+          }}
         >
           {[longVideo2, longVideo1].map((video, i) => (
             <SwiperSlide key={i}>
@@ -86,9 +97,15 @@ function Portfolio() {
           modules={[Navigation, Pagination]}
           navigation
           pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={3} // show 3 images by default
-          loop={true}  // Kept enabled (4 slides is enough)
+          spaceBetween={10} // Default smaller for mobile
+          slidesPerView={1} // Default: 1 for mobile
+          loop={true}  // Kept enabled (4 slides)
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
         >
           {[carousel3, carousel2, carousel1, carousel4].map((img, i) => (
             <SwiperSlide key={i}>
@@ -105,9 +122,14 @@ function Portfolio() {
           modules={[Navigation, Pagination]}
           navigation
           pagination={{ clickable: true }}
-          spaceBetween={20}
-          slidesPerView={1} // show 1 image by default
-          loop={false}  // Disabled to avoid warning (only 2 slides)
+          spaceBetween={10} // Default smaller for mobile
+          slidesPerView={1} // Always 1
+          loop={false}  // Disabled (only 2 slides)
+          breakpoints={{
+            768: {
+              spaceBetween: 20,
+            },
+          }}
         >
           {[result1, result2].map((img, i) => (
             <SwiperSlide key={i}>

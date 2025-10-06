@@ -128,3 +128,20 @@
   object-fit: contain;
   margin-bottom: 16px;
 }
+
+
+@media (max-width:440px){
+  .process {
+    padding: 60px 24px 40px 24px;
+  }
+  .process h2 {
+    font-size: 1.8rem;
+  }
+  .tagline {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .grid {
+    gap: 24px;
+  }
+}

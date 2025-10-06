@@ -1,4 +1,33 @@
-.git
-backend/venv
-node_modules
-*.mp4  # Exclude large videos if not needed in image
+# Ignore everything by default
+**
+
+# Allow essentials
+!Dockerfile
+!.dockerignore
+!package.json
+!package-lock.json
+!vite.config.js
+!index.html
+
+# Backend
+!backend/
+!backend/requirements.txt
+
+# Frontend
+!src/
+!public/
+
+# Ignore build artifacts and temp files
+node_modules/
+dist/
+**/*.log
+**/*.tmp
+
+# Backend ignores
+backend/__pycache__/
+backend/venv/
+backend/.env
+backend/**/*.log
+backend/**/*.tmp
+backend/assets/
+backend/datasets/

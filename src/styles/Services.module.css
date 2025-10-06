@@ -25,6 +25,9 @@
 }
 
 .grid {
+  width: 90%;
+  margin: 0 auto;
+  
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
@@ -67,4 +70,52 @@
   margin-bottom: 0.5rem;
   font-size: 1.08rem;
   line-height: 1.5;
+}
+
+@media (max-width: 440px) {
+  .services {
+    padding: 3rem 2rem;
+  }
+
+  .services h2,p {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    
+     width: 100%;
+    margin: 0 auto;
+  
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    min-height: auto;
+    width: 90;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card li {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  
 }

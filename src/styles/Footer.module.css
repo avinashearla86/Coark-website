@@ -17,11 +17,12 @@
 .brand {
   flex: 1 1 340px;
   min-width: 250px;
+  padding: 1rem;
 }
 .logo {
   width: 160px;        
   height: auto;
-  display: block;
+  /* display: block; */
   object-fit: contain;
   margin-bottom: 0.8rem;  /* Adjusted for better spacing */
 }
@@ -32,8 +33,8 @@
 }
 
 .services {
-  flex: 1 1 160px;
-  min-width: 160px;
+  flex: 1 1 240px;
+  min-width: 240px;
 }
 .services h3 {
   font-size: 1.05rem;
@@ -93,9 +94,24 @@
 /* Responsive */
 @media (max-width: 800px) {
   .footerGrid {
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     gap: 2.2rem;
     align-items: center;
   }
+  .socialIcons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.1rem;
+  justify-content: center;
+}
+/* .logo {
+  width: 160px;        
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  margin-bottom: 0.8rem;  /* Adjusted for better spacing */
+
 }

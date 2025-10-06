@@ -1,44 +1,28 @@
 // src/components/Testimonials.jsx
 import React from "react";
 import styles from "../styles/Testimonials.module.css";
+import avatar1 from "../assets/avatar.png";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc.",
-    text: `"COARK MEDIA transformed our video content strategy. Their editing skills are exceptional, and the results speak for themselves - 300% increase in engagement!"`,
+    name: "Akshay",
+  
+    text: `"I initially had doubts about their capability, but after taking their video editing and social media management services, I was truly impressed. Their dedication and quality of work proved me wrong. Keep going like this, team!"`,
     rating: 5,
   },
   {
-    name: "Michael Chen",
-    role: "Marketing Director, FashionForward",
-    text: `"The influencer marketing campaign exceeded all expectations. Professional, strategic, and delivered incredible ROI."`,
+    name: "Nani Sai",
+    
+    text: `"I have worked with this team for around 1 year to grow my Instagram account @cyberisky. Their strong analytical skills and SEO strategies helped increase my followers from 5k to 17k."`,
     rating: 5,
   },
   {
-    name: "David Rodriguez",
-    role: "Founder, HealthTech Solutions",
-    text: `"From brand strategy to social media management, COARK MEDIA handled everything perfectly. Our brand recognition increased by 200% in just 6 months."`,
+    name: "Radha Kumari",
+   
+    text: `"I have worked with this team to improve our website performance. Their SEO expertise increased our ranking score from 40% to 85%, which made a real difference for our business."`,
     rating: 5,
   },
-  {
-    name: "Emily Watson",
-    role: "Owner, Boutique Brands",
-    text: `"Their Meta advertising expertise is unmatched. We achieved 400% ROAS and scaled beyond our expectations."`,
-    rating: 5,
-  },
-  {
-    name: "James Thompson",
-    role: "VP Marketing, GlobalCorp",
-    text: `"Working with COARK MEDIA was a game-changer. Their comprehensive approach to digital media helped us dominate our market segment."`,
-    rating: 5,
-  },
-  {
-    name: "Lisa Martinez",
-    role: "Creative Director, ArtStudio",
-    text: `"The attention to detail and creative vision they brought to our projects was outstanding. Every deliverable exceeded our expectations."`,
-    rating: 5,
-  },
+ 
 ];
 
 const Testimonials = () => {
@@ -58,7 +42,7 @@ const Testimonials = () => {
         {testimonials.map((t, index) => (
           <div key={index} className={styles.card}>
             <div className={styles.header}>
-              <div className={styles.avatar}></div>
+              <div className={styles.avatar}> <img src={avatar1} alt="#" /></div>
               <div>
                 <h3>{t.name}</h3>
                 <p>{t.role}</p>

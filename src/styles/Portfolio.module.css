@@ -36,7 +36,7 @@
 }
 
 .cimage {
-  width: 100%;
+  width: 80%;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   object-fit: cover; /* For images */
@@ -50,7 +50,7 @@
 }
 
 .video {
-  width: 100%;
+  width: 80%;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   object-fit: cover;
@@ -59,11 +59,9 @@
 /* Smaller long-form videos */
 .longVideo {
   max-width: 80%;   
-  
   margin: 0 auto;     
   display: block;
 }
-
 
 /* Your existing styles remain unchanged */
 
@@ -80,7 +78,7 @@
   opacity: 1;
 }
 
-/* Navigation Arrows */
+/* Navigation Arrows (Global) */
 :global(.swiper-button-next),
 :global(.swiper-button-prev) {
   color: #e23b33 !important; /* red */
@@ -91,4 +89,49 @@
 :global(.swiper-button-next:hover),
 :global(.swiper-button-prev:hover) {
   transform: scale(1.2); /* small hover effect */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+  .portfolio {
+    padding: 2rem 1rem; /* Reduce padding on mobile */
+  }
+
+  .grid {
+    gap: 1rem; /* Smaller gap on mobile */
+  }
+
+  .cimage,
+  .rimage,
+  .video,
+  .longVideo {
+    width: 80%; /* Adjusted width on mobile for better fit */
+    max-width: 100%;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 8px;
+    height: 8px; /* Smaller bullets on mobile */
+  }
+
+  /* Override Swiper's default navigation size variable on mobile */
+  :global(:root) {
+    --swiper-navigation-size: 30px !important; /* Smaller base size */
+  }
+
+  /* Smaller Navigation Arrows on Mobile */
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    width: 30px !important;      /* Reduced width */
+    height: 30px !important;     /* Reduced height */
+    font-size: 16px !important;  /* Base icon size */
+    margin-top: calc(0px - (30px / 2)) !important; /* Adjust vertical centering based on new size */
+  }
+
+  /* Target the arrow icons (pseudo-elements) for even smaller sizing */
+  :global(.swiper-button-next::after),
+  :global(.swiper-button-prev::after) {
+    font-size: 12px !important; /* Shrink the actual arrow icon */
+    font-weight: bold;
+  }
 }
