@@ -9,12 +9,9 @@ import pickle
 from email.mime.text import MIMEText
 from googleapiclient.discovery import build
 
-# ===== Paths =====
 BASE_DIR = Path(__file__).resolve().parent
-FRONTEND_DIR = BASE_DIR.parent / "dist"
+FRONTEND_DIR = BASE_DIR.parent / "dist"  # React build folder
 TOKEN_PATH = BASE_DIR / "token.pickle"
-
-print(f"✅ Serving frontend from: {FRONTEND_DIR}")
 
 app = FastAPI()
 
@@ -25,13 +22,17 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:3000",
         "https://coark-website-latest.onrender.com",
+        "https://coarkmedia.in",
+        "https://www.coarkmedia.in",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ===== Explicit favicon route =====
+# ===== Serve static files =====
+app.mount("/assets", StaticFiles(directory=FRONTEND_DIR / "assets"), name="assets")
+
 @app.get("/favicon.ico")
 async def favicon():
     favicon_path = FRONTEND_DIR / "favicon.ico"
@@ -39,10 +40,7 @@ async def favicon():
         return FileResponse(favicon_path)
     raise HTTPException(status_code=404, detail="Favicon not found")
 
-# ===== Serve frontend static files =====
-app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
-
-# ===== Contact Form API =====
+# ===== Contact Form =====
 class ContactForm(BaseModel):
     first_name: str
     last_name: str
@@ -55,7 +53,7 @@ class ContactForm(BaseModel):
 async def send_message(form: ContactForm):
     try:
         if not TOKEN_PATH.exists():
-            raise FileNotFoundError(f"Token file not found at {TOKEN_PATH}")
+            raise FileNotFoundError("Token file not found")
 
         with open(TOKEN_PATH, "rb") as token:
             creds = pickle.load(token)
@@ -64,12 +62,15 @@ async def send_message(form: ContactForm):
 
         subject = f"New Contact Form Submission: {form.service}"
         body = f"""
+📩 New Contact Form Submission
+
 First Name: {form.first_name}
 Last Name: {form.last_name}
 Email: {form.email}
 Mobile Number: {form.mobile_number or 'Not provided'}
 Service: {form.service}
-Message: {form.message}
+Message:
+{form.message}
 """
 
         message = MIMEText(body)
@@ -81,17 +82,24 @@ Message: {form.message}
         create_message = {"raw": raw_message}
 
         sent = service.users().messages().send(userId="me", body=create_message).execute()
-
         return {"detail": f"✅ Message sent successfully! ID: {sent['id']}"}
 
     except Exception as e:
-        print(f"Email sending failed: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to send message: {str(e)}")
+        print("Error sending message:", e)
+        raise HTTPException(status_code=500, detail=f"Failed to send message: {e}")
 
-# ===== SPA fallback =====
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
+# ===== Serve React Frontend =====
+@app.get("/")
+async def serve_index():
     index_path = FRONTEND_DIR / "index.html"
     if index_path.exists():
         return FileResponse(index_path)
-    raise HTTPException(status_code=404, detail="Not Found")
+    raise HTTPException(status_code=404, detail="index.html not found")
+
+@app.get("/{full_path:path}")
+async def serve_react_router(full_path: str):
+    file_path = FRONTEND_DIR / full_path
+    if file_path.exists():
+        return FileResponse(file_path)
+    index_path = FRONTEND_DIR / "index.html"
+    return FileResponse(index_path)

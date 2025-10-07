@@ -19,7 +19,6 @@ function Contact() {
     service: "",
     message: "",
   });
-
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
@@ -31,7 +30,12 @@ function Contact() {
     setStatus("⏳ Sending message...");
 
     try {
-      const response = await fetch("https://coark-website-latest.onrender.com/send-message", {
+      const backendUrl =
+        import.meta.env.MODE === "development"
+          ? "http://localhost:8000/send-message"
+          : "/send-message";
+
+      const response = await fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -57,7 +61,7 @@ function Contact() {
           message: "",
         });
       } else {
-        setStatus("❌ Failed: " + JSON.stringify(data.detail));
+        setStatus("❌ Failed: " + data.detail);
       }
     } catch (error) {
       setStatus("⚠️ Error: " + error.message);
@@ -72,12 +76,12 @@ function Contact() {
             Ready to <span className={styles.red}>Get Started?</span>
           </h2>
           <p>
-            Let's discuss your digital media needs and create a strategy that
+            Let’s discuss your digital media needs and create a strategy that
             drives real results for your business.
           </p>
           <ul>
             <li>
-              <span className={styles.icon}>☎</span> 917794963444
+              <span className={styles.icon}>☎</span> +91 7794963444
             </li>
             <li>
               <span className={styles.icon}>✉️</span>{" "}
