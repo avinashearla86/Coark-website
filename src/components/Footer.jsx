@@ -29,9 +29,9 @@ function Footer() {
         <div className={styles.social}>
           <h3>Follow Us</h3>
           <div className={styles.socialIcons}>
-            <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="https://www.instagram.com/coarkmedia/?igsh=MW5tZHJyMzlobDI4Zw%3D%3D#"><FontAwesomeIcon icon={faInstagram} /></a>
             <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-            <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
+            <a href="https://x.com/coarkmedia"><FontAwesomeIcon icon={faTwitter} /></a>
             <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
           </div>
         </div>

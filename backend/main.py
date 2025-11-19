@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, PlainTextResponse # <--- Added PlainTextResponse
 from pydantic import BaseModel
 from pathlib import Path
 import base64
@@ -32,6 +32,14 @@ app.add_middleware(
 
 # ===== Serve static files =====
 app.mount("/assets", StaticFiles(directory=FRONTEND_DIR / "assets"), name="assets")
+
+# ===== ROBOTS.TXT FIX (Add this block) =====
+@app.get("/robots.txt", response_class=PlainTextResponse)
+async def robots():
+    return """User-agent: *
+Allow: /
+Sitemap: https://coarkmedia.in/sitemap.xml
+"""
 
 @app.get("/favicon.ico")
 async def favicon():
@@ -96,10 +104,14 @@ async def serve_index():
         return FileResponse(index_path)
     raise HTTPException(status_code=404, detail="index.html not found")
 
+# This is the Catch-All route that was causing the issue
 @app.get("/{full_path:path}")
 async def serve_react_router(full_path: str):
     file_path = FRONTEND_DIR / full_path
     if file_path.exists():
         return FileResponse(file_path)
+    
+    # If the file is not found, it serves index.html (React app)
+    # This is good for users, but bad for robots.txt if the file is missing
     index_path = FRONTEND_DIR / "index.html"
     return FileResponse(index_path)
